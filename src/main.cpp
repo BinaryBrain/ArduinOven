@@ -3,9 +3,9 @@
 
 #define LED 2
 #define THERMO_OUT 19
-#define THERMO_SELECT 5
-#define THERMO_CLK 18
-#define RELAY 10
+#define THERMO_SELECT 18
+#define THERMO_CLK 5
+#define RELAY 12
 
 void turnOn();
 void turnOff();
@@ -19,8 +19,8 @@ MAX6675 thermocouple(THERMO_CLK, THERMO_SELECT, THERMO_OUT);
 
 void setup() {
   Serial.begin(115200);
-  // pinMode(RELAY, OUTPUT);
-  // digitalWrite(RELAY, LOW);
+  pinMode(RELAY, OUTPUT);
+  digitalWrite(RELAY, LOW);
   pinMode(LED, OUTPUT);
   digitalWrite(LED, LOW);
   Serial.println("Bonjour four!");
@@ -41,11 +41,9 @@ void loop() {
 void turnOn() {
   digitalWrite(RELAY, HIGH);
   digitalWrite(LED, HIGH);
-  // Serial.println("Four allumé");
 }
 
 void turnOff() {
   digitalWrite(RELAY, LOW);
   digitalWrite(LED, LOW);
-  // Serial.println("Four éteint");
 }
